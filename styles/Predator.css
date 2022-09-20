@@ -1,0 +1,133 @@
+.player-card {
+    border: 2px;
+    border-color: grey;
+    border-style: dashed;
+    border-radius: 20px;
+
+    
+    width: 50%;
+    height: 100%;
+
+    padding: 10px;
+}
+
+.player-card p {
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(134, 4, 4);
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    margin: 1px;
+}
+
+.player-card img {
+    width: 100%;
+}
+
+.enemy-card img {
+    height: 100px;
+    width: 100px;
+}
+
+#enemy-input {
+    color: rgb(134, 4, 4);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+}
+
+#enemy-input input {
+    background-color: black;
+    color: rgb(134, 4, 4);
+    border-color: grey;
+    height: 50px;
+    width: 300px;
+
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;5
+}
+
+#enemy-input button {
+    background-color: black;
+    color: rgb(134, 4, 4);
+    border-color: grey;
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+}
+
+#enemy-list {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 10px;
+    gap: 10px;
+}
+
+li {
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: grey;
+    padding: 5px;
+
+    width: 400px;
+
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(134, 4, 4);
+    color: black;
+
+    text-align: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    align-items: center;
+    place-items: center;
+
+    padding: 20px;
+}
+
+#remove-enemy {
+    background: black;
+    color: rgb(134, 4, 4);
+    border-color: grey;
+    height: 50px;
+    width: 300px;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+}
+
+.banners {
+    height: 100px;
+
+    background-color: rgb(134, 4, 4);
+
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    
+    display: grid;
+    place-content: center;
+}
+
+.name {
+    display: grid;
+    place-content: center;
+}
+
+.stats {
+    font-size: 50px;
+    color: grey;
+    display: grid;
+    place-content: center;
+}
+#player-board {
+    background-color: grey;
+}
