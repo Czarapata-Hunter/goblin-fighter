@@ -16,9 +16,15 @@ let player = {
     health: 100,
     type: 'champion',
 };
+
+let result = '';
 /* Events */
 
 /* Display Functions */
+function displayResult() {
+    damageBoard.textContent = result;
+}
+
 function displayPlayer() {
     playerHealth.textContent = Math.max(0, player.health);
     if (player.health < 1) {
@@ -29,3 +35,4 @@ function displayPlayer() {
 }
 // (don't forget to call any display functions you want to run on page load!)
 displayPlayer();
+displayResult();
