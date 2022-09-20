@@ -18,11 +18,16 @@ let player = {
 };
 
 let result = '';
+let defeated = 0;
 /* Events */
 
 /* Display Functions */
 function displayResult() {
     damageBoard.textContent = result;
+}
+
+function displayPlayerBoard() {
+    playerBoard.textContent = `You have defeated ${defeated} enemies.`;
 }
 
 function displayPlayer() {
@@ -36,3 +41,4 @@ function displayPlayer() {
 // (don't forget to call any display functions you want to run on page load!)
 displayPlayer();
 displayResult();
+displayPlayerBoard();
