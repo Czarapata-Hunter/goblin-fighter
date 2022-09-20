@@ -1,5 +1,5 @@
 /* Imports */
-
+import { renderEnemy } from "./render-utilities.js";
 /* Get DOM Elements */
 const predator = document.getElementById('predator');
 const playerHealth = document.getElementById('player-health');
@@ -19,6 +19,45 @@ let player = {
 
 let result = '';
 let defeated = 0;
+
+let enemies = [
+    {
+        name: 'Xenomorph',
+        type: 'alien',
+        health: 20,
+    },
+    {
+        name: 'Dutch',
+        type: 'human1',
+        health: 15,
+    },
+    {
+        name: 'Sniper',
+        type: 'human2',
+        health: 10,
+    },
+];
+
+//monster types
+const alien = {
+    type: 'alien',
+    health: 20,
+};
+
+const human1 = {
+    type: 'human1',
+    health: 15,
+};
+
+const human2 = {
+    type: 'human2',
+    health: 10,
+};
+
+const devil = {
+    type: 'devil',
+    health: 30;
+};
 /* Events */
 
 /* Display Functions */
@@ -36,6 +75,23 @@ function displayPlayer() {
         predator.src = 'assets/predator_dead.png';
     } else {
         predator.src = `assets/${player.type}.png`;
+    }
+}
+
+function displayEnemies() {
+    enemyList.innerHTML = '';
+
+    for(const enemy of enemies) {
+        const enemyEl = renderEnemy(enemy);
+        enemyList.append(enemyEl);
+
+        goblinEl.addEventListener('click', () => {
+            if (enemy.health < 1 {
+                result = `Enemy is already dead, fight someone else.`;
+                displayResult();
+                return;
+            }
+        })
     }
 }
 // (don't forget to call any display functions you want to run on page load!)
