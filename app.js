@@ -1,13 +1,13 @@
 /* Imports */
-import { renderBad } from "./render-utilities.js";
-import { getRandomItem } from "./utils.js";
+import { renderBad } from './render-utilities.js';
+import { getRandomItem } from './utils.js';
 /* Get DOM Elements */
 const predator = document.getElementById('predator');
 const predatorHealth = document.getElementById('predator-health');
 
-const enemyInput = document.getElementById('enemy-input');
+const badInput = document.getElementById('enemy-input');
 const badList = document.getElementById('bad-list');
-const removeEnemy = document.getElementById('remove-enemy');
+const removeBad = document.getElementById('remove-bad');
 
 const playerBoard = document.getElementById('player-board');
 const damageBoard = document.getElementById('damage-board');
@@ -57,25 +57,32 @@ const human2 = {
 
 const devil = {
     type: 'devil',
-    health: 30;
+    health: 30,
 };
 
 const playerAttacks = [0, 5, 5, 10, 10, 10, 15, 15, 15, 15, 20, 20, 25];
 const monsterAttacks = [0, 0, 5, 5, 5, 5, 10, 10, 10, 15, 15];
-const monsterTypes = [
-    human2,
-    human2,
-    human2,
-    human2,
-    human1,
-    human1,
-    human1,
-    alien,
-    alien,
-    devil,
-];
+const monsterTypes = [human2, human2, human2, human2, human1, human1, human1, alien, alien, devil];
 /* Events */
+badInput.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(badInput);
+    const monsterType = getRandomItem(monsterTypes);
 
+    const bad = {
+        name: formData.get('name'),
+        type: monsterType.type,
+        health: monsterType.health,
+    };
+    bads.push(bad);
+
+    result = `${bad.name} the ${bad.type} has joined the carnage`;
+
+    displayBads();
+    displayResult();
+
+    badInput.reset();
+});
 /* Display Functions */
 function displayResult() {
     damageBoard.textContent = result;
@@ -97,12 +104,12 @@ function displayPlayer() {
 function displayBads() {
     badList.innerHTML = '';
 
-    for(const bad of bads) {
+    for (const bad of bads) {
         const badEl = renderBad(bad);
         badList.append(badEl);
 
         badEl.addEventListener('click', () => {
-            if (bad.health < 1 {
+            if (bad.health < 1) {
                 result = `Enemy is already dead, fight someone else.`;
                 displayResult();
                 return;
@@ -113,14 +120,14 @@ function displayBads() {
 
             player.health = Math.max(0, player.health - monsterAttack);
             bad.health = Math.max(0, bad.health - playerAttack);
-            
+
             result = '';
             if (playerAttack === 0) {
                 result += 'Your blades go whizzing by. ';
             } else {
                 result += `You slice ${bad.name} and did ${playerAttack} in damage. `;
             }
-            
+
             if (monsterAttack === 0) {
                 result += `${bad.name} missed you.`;
             } else {
@@ -135,7 +142,7 @@ function displayBads() {
             displayResult();
             displayPlayer();
             displayBads();
-        })
+        });
     }
 }
 // (don't forget to call any display functions you want to run on page load!)
