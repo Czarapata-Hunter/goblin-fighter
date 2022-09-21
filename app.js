@@ -5,7 +5,7 @@ import { getRandomItem } from './utils.js';
 const predator = document.getElementById('predator');
 const predatorHealth = document.getElementById('predator-health');
 
-const badInput = document.getElementById('enemy-input');
+const badInput = document.getElementById('bad-input');
 const badList = document.getElementById('bad-list');
 const removeBad = document.getElementById('remove-bad');
 
@@ -64,6 +64,7 @@ const playerAttacks = [0, 5, 5, 10, 10, 10, 15, 15, 15, 15, 20, 20, 25];
 const monsterAttacks = [0, 0, 5, 5, 5, 5, 10, 10, 10, 15, 15];
 const monsterTypes = [human2, human2, human2, human2, human1, human1, human1, alien, alien, devil];
 /* Events */
+
 badInput.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(badInput);
@@ -82,6 +83,18 @@ badInput.addEventListener('submit', (e) => {
     displayResult();
 
     badInput.reset();
+});
+
+removeBad.addEventListener('click', () => {
+    const alive = [];
+
+    for (const bad of bads) {
+        if (bad.health > 0) {
+            alive.push(bad);
+        }
+    }
+    bads = alive;
+    displayBads();
 });
 /* Display Functions */
 function displayResult() {
