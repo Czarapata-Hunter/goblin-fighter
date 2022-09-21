@@ -1,11 +1,12 @@
 /* Imports */
-import { renderEnemy } from "./render-utilities.js";
+import { renderBad } from "./render-utilities.js";
+import { getRandomItem } from "./utils.js";
 /* Get DOM Elements */
 const predator = document.getElementById('predator');
-const playerHealth = document.getElementById('player-health');
+const predatorHealth = document.getElementById('predator-health');
 
 const enemyInput = document.getElementById('enemy-input');
-const enemyList = document.getElementById('enemy-list');
+const badList = document.getElementById('bad-list');
 const removeEnemy = document.getElementById('remove-enemy');
 
 const playerBoard = document.getElementById('player-board');
@@ -20,7 +21,7 @@ let player = {
 let result = '';
 let defeated = 0;
 
-let enemies = [
+let bads = [
     {
         name: 'Xenomorph',
         type: 'alien',
@@ -58,6 +59,21 @@ const devil = {
     type: 'devil',
     health: 30;
 };
+
+const playerAttacks = [0, 5, 5, 10, 10, 10, 15, 15, 15, 15, 20, 20, 25];
+const monsterAttacks = [0, 0, 5, 5, 5, 5, 10, 10, 10, 15, 15];
+const monsterTypes = [
+    human2,
+    human2,
+    human2,
+    human2,
+    human1,
+    human1,
+    human1,
+    alien,
+    alien,
+    devil,
+];
 /* Events */
 
 /* Display Functions */
@@ -70,7 +86,7 @@ function displayPlayerBoard() {
 }
 
 function displayPlayer() {
-    playerHealth.textContent = Math.max(0, player.health);
+    predatorHealth.textContent = Math.max(0, player.health);
     if (player.health < 1) {
         predator.src = 'assets/predator_dead.png';
     } else {
@@ -78,23 +94,50 @@ function displayPlayer() {
     }
 }
 
-function displayEnemies() {
-    enemyList.innerHTML = '';
+function displayBads() {
+    badList.innerHTML = '';
 
-    for(const enemy of enemies) {
-        const enemyEl = renderEnemy(enemy);
-        enemyList.append(enemyEl);
+    for(const bad of bads) {
+        const badEl = renderBad(bad);
+        badList.append(badEl);
 
-        goblinEl.addEventListener('click', () => {
-            if (enemy.health < 1 {
+        badEl.addEventListener('click', () => {
+            if (bad.health < 1 {
                 result = `Enemy is already dead, fight someone else.`;
                 displayResult();
                 return;
             }
+
+            const playerAttack = getRandomItem(playerAttacks);
+            const monsterAttack = getRandomItem(monsterAttacks);
+
+            player.health = Math.max(0, player.health - monsterAttack);
+            bad.health = Math.max(0, bad.health - playerAttack);
+            
+            result = '';
+            if (playerAttack === 0) {
+                result += 'Your blades go whizzing by. ';
+            } else {
+                result += `You slice ${bad.name} and did ${playerAttack} in damage. `;
+            }
+            
+            if (monsterAttack === 0) {
+                result += `${bad.name} missed you.`;
+            } else {
+                result += `${bad.name} hit you and did ${monsterAttack} in damage.`;
+            }
+
+            if (bad.health < 1) {
+                defeated++;
+                displayPlayerBoard();
+            }
+
+            displayResult();
+            displayPlayer();
+            displayBads();
         })
     }
 }
 // (don't forget to call any display functions you want to run on page load!)
 displayPlayer();
-displayResult();
-displayPlayerBoard();
+displayBads();

@@ -1,22 +1,22 @@
-export function renderEnemy(enemy) {
+export function renderBad(bad) {
     const li = document.createElement('li');
-    li.classList.add('enemy', 'card');
+    li.classList.add('bad', 'card');
 
     const health = document.createElement('span');
     health.classList.add('stat');
-    health.textContent = enemy.health;
+    health.textContent = bad.health;
 
     const image = document.createElement('img');
-    image.alt = enemy.type;
-    if (enemy.health < 1) {
+    image.alt = bad.type;
+    if (bad.health < 1) {
         image.src = `assets/human-skull.png`;
     } else {
-        image.src = `assets/Picture Icons/Enemy Icons/${enemy.type}.png`;
+        image.src = `assets/Picture Icons/Enemy Icons/${bad.type}.png`;
     }
 
     const name = document.createElement('span');
     name.classList.add('name');
-    name.textContent = goblin.name;
+    name.textContent = bad.name;
 
     li.append(health, image, name);
 
