@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Predator Hunting Grounds</title>
+        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>Web App</title>
-    <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <!-- see https://fonts.google.com/ -->
 
-    <!-- fonts -->
-    <!-- see https://fonts.google.com/ -->
+        <!-- css -->
+        <link rel="stylesheet" href="styles/reset.css" />
+        <link rel="stylesheet" href="styles/global.css" />
+        <link rel="stylesheet" href="/styles/Predator.css" />
+        <!-- add link for page specific css -->
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <!-- add link for page specific css -->
+    <body>
+        <header>
+            <img class="logo" src="/assets/predator.png" alt="logo" />
+            <h1>Predator Hunting Grounds</h1>
+        </header>
 
-</head>
+        <main>
+            <div id="top">
+                <section class="player-card">
+                    <p id="predator-name">Predator</p>
+                    <img id="predator" src="/assets/champion.png" />
+                    <p id="predator-health">100</p>
+                </section>
 
-<body>
-    <header>
-        <img class="logo" src="assets/html_css_js.png" alt="logo">
-        <h1>Web App</h1>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+                <section class="enemy-section">
+                    <form id="bad-input">
+                        <label>
+                            <div>New Enemy</div>
+                            <div class="controls">
+                                <input name="name" required />
+                                <button>+</button>
+                            </div>
+                        </label>
+                    </form>
+                    <ul id="bad-list">
+                        <li class="enemy-card">
+                            <img src="/assets/Picture Icons/Enemy Icons/alien.png" />
+                            <span class="name">Xenomorph</span>
+                            <span class="stats">4</span>
+                        </li>
+                        <li class="enemy-card">
+                            <img src="/assets/Picture Icons/Enemy Icons/human1.png" />
+                            <span class="name">Dutch</span>
+                            <span class="stats">4</span>
+                        </li>
+                        <li class="enemy-card">
+                            <img src="/assets/Picture Icons/Enemy Icons/human2.png" />
+                            <span class="name">Sniper</span>
+                            <span class="stats">4</span>
+                        </li>
+                    </ul>
+                    <button id="remove-bad">Remove Slain Enemies</button>
+                </section>
+            </div>
+            <div id="bottom">
+                <section class="banners" id="player-board">
+                    You have no kills towards being blooded
+                </section>
+                <section class="banners" id="damage-board">
+                    Click on any Enemy to begin the blooded process
+                </section>
+            </div>
+        </main>
+        <footer>
+            <a href="https://www.flaticon.com/free-icons/predator" title="predator icons"
+                >Predator icons created by Pixel perfect - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/alien" title="alien icons"
+                >Alien icons created by Smashicons - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/soldier" title="soldier icons"
+                >Soldier icons created by RaftelDesign - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/sniper" title="sniper icons"
+                >Sniper icons created by max.icons - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/evil" title="evil icons"
+                >Evil icons created by Eucalyp - Flaticon</a
+            >
+        </footer>
+    </body>
 </html>
